@@ -1,0 +1,31 @@
+kayttaja->selain: uusi muistiinpano + Talleta-painike
+
+note left of selain
+Käyttäjä kirjoittaa syötekenttään uuden muistiinpanon
+ja painaa Talleta-painiketta
+end note
+
+note left of selain
+spa.js:
+luodaan muistiinpano ja lisätään se muistiinpanojen listalle
+end note
+
+note left of selain
+spa.js:
+piirretään UI-sisältö uudelleen eli muodostetaan muistiinpanojen
+lista uudelleen
+end note
+
+note left of selain
+spa.js:
+lähetetään uusi muistiinpano palvelimelle
+end note
+
+note left of palvelin
+json-muodossa uusi muistiinpano, johon kuuluu sisältö (content)
+ja aikaleima (date)
+end note
+
+selain->palvelin: POST fullstack-exampleapp.herokuapp.com/new_note_spa
+
+palvelin->selain: status 201 (created)
