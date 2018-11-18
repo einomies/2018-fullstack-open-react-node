@@ -1,0 +1,38 @@
+kayttaja->selain:
+
+note left of selain
+Käyttäjä kirjoittaa syötekenttään uuden muistiinpanon
+ja painaa Talleta-painiketta
+end note
+
+selain->palvelin: POST fullstack-exampleapp.herokuapp.com/new_note
+
+palvelin->selain: status 302 -> uudelleenohjauspyyntö HTTP GET, Location = /notes
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/notes
+
+note left of palvelin
+  Muodostetaan HTML-document, jossa on viittaukset script-tagien
+  sisällä tyylitiedostoon (main.css) ja JS-tiedostoon (main.js).
+end note
+
+palvelin->selain: status 200, sivun HTML-koodi
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.css
+palvelin->selain: status 200, tyylitiedosto main.css
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.js
+palvelin->selain: status 200, javascript-tiedosto main.js selaimen suoritettavaksi
+
+note left of selain
+ main.js: selain pyytää data.json -tiedoston
+end note
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/data.json
+palvelin->selain: status 200, data.json
+
+note left of selain
+ main.js: muodostetaan data.json-tiedostosta selaimeen
+ bullet-lista muistiinpanojen sisällöstä, käyttäjän lisäämä
+ uusi muistiinpano näkyy nyt listalla
+end note
