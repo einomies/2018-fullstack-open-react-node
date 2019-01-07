@@ -1,33 +1,48 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const App = () => {
-    const nimi = "Pekka"
-    const ika = 10
-    return (
-        <div>
-            <h1>Heipodei</h1>
-            <Hello name="Arto" age={26 + 10} />
-            <Hello name={nimi} age={ika / 0.4} />
-            <Footer />
-        </div>
-    )
+// Tapahtumankäsittelijöiden määrittely suoraan JSX-templatejen sisällä ei useimmiten ole kovin viisasta.
+// Eriytetään nappien tapahtumankäsittelijät omiksi metodeikseen.
+
+class App extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            counter: 1
+        }
+    }
+
+    kasvataYhdella() {
+        console.log(this)
+        this.setState({ counter: this.state.counter + 1 })
+    }
+
+    nollaa() {
+        console.log(this)
+        this.setState({ counter: 0 })
+    }
+
+    render() {
+        return (
+            <div>
+                <div>
+                    counter: {this.state.counter}
+                </div>
+                <div>
+                    <button onClick={this.kasvataYhdella}>
+                        plus
+                    </button>
+                    <button onClick={this.nollaa}>
+                        zero
+                    </button>
+                </div>
+            </div>
+        )
+    }
 }
 
-const Hello = (props) => {
-    return (
-        <div>
-            <p>Hello {props.name}, you are {props.age} years old</p>
-        </div>
-    )
-}
 
-const Footer = () => {
-    return (
-        <div>
-            greeting app created by <a href="https://github.com/mluukkai">mluukkai</a>
-        </div>
-    )
-}
-
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+)
