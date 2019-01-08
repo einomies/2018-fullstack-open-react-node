@@ -9,17 +9,20 @@ class App extends React.Component {
         super()
         this.state = {
             counter: 1
+            , kiku: 'abc'
         }
+        this.kasvataYhdella = this.kasvataYhdella.bind(this)
+        this.nollaa = this.nollaa.bind(this)
     }
 
-    kasvataYhdella() {
-        console.log(this)
+    kasvataYhdella = () => {
         this.setState({ counter: this.state.counter + 1 })
+        this.setState({ kiku: 'xxx' })
     }
 
-    nollaa() {
-        console.log(this)
+    nollaa = () => {
         this.setState({ counter: 0 })
+        this.setState({ kiku: 'abc' })
     }
 
     render() {
@@ -27,12 +30,14 @@ class App extends React.Component {
             <div>
                 <div>
                     counter: {this.state.counter}
+                    <p></p>
+                    kiku: {this.state.kiku}
                 </div>
                 <div>
-                    <button onClick={this.kasvataYhdella}>
+                    <button onClick={this.kasvataYhdella.bind(this)}>
                         plus
                     </button>
-                    <button onClick={this.nollaa}>
+                    <button onClick={this.nollaa.bind(this)}>
                         zero
                     </button>
                 </div>
