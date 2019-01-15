@@ -8,7 +8,7 @@ class App extends React.Component {
     constructor() {
         super()
         this.state = {
-            counter: 1
+            counter: 0
             , kiku: 'abc'
         }
         this.kasvataYhdella = this.kasvataYhdella.bind(this)
@@ -16,7 +16,10 @@ class App extends React.Component {
     }
 
     kasvataYhdella = () => {
-        this.setState({ counter: this.state.counter + 1 })
+        // this.setState({ counter: this.state.counter + 1 })
+        this.setState(
+            (prevState) => ({ counter: prevState.counter + 1 })
+        )
         this.setState({ kiku: 'xxx' })
     }
 
