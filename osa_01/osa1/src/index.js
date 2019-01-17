@@ -10,22 +10,21 @@ class App extends React.Component {
         this.state = {
             counter: 0
             , kiku: 'abc'
+            , random: 0
         }
-        this.kasvataYhdella = this.kasvataYhdella.bind(this)
-        this.nollaa = this.nollaa.bind(this)
     }
 
-    kasvataYhdella = () => {
-        // this.setState({ counter: this.state.counter + 1 })
-        this.setState(
-            (prevState) => ({ counter: prevState.counter + 1 })
-        )
-        this.setState({ kiku: 'xxx' })
-    }
-
-    nollaa = () => {
-        this.setState({ counter: 0 })
-        this.setState({ kiku: 'abc' })
+    asetaArvoon = (arvo) => {
+        return () => {
+            this.setState({ counter: arvo })
+            if (arvo === 0) {
+                this.setState({ kiku: 'abc' })
+                this.setState({ random: 0 })
+            } else {
+                this.setState({ kiku: 'xxx' })
+                this.setState({random: Math.random()})
+            }
+        }
     }
 
     render() {
@@ -35,13 +34,16 @@ class App extends React.Component {
                     counter: {this.state.counter}
                     <p></p>
                     kiku: {this.state.kiku}
+                    <p></p>
+                    random: {this.state.random}
+                    <p></p>
                 </div>
                 <div>
-                    <button onClick={this.kasvataYhdella.bind(this)}>
-                        plus
+                    <button onClick={this.asetaArvoon(this.state.counter + 1)}>
+                        Plus
                     </button>
-                    <button onClick={this.nollaa.bind(this)}>
-                        zero
+                    <button onClick={this.asetaArvoon(0)}>
+                        Zero
                     </button>
                 </div>
             </div>
