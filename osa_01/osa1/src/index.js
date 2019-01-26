@@ -16,11 +16,16 @@ class App extends React.Component {
     }
 
     render() {
+        const hello = () => {
+            const handler = () => console.log('hello world')
+            return handler
+        }
         return (
             <div>
                 value: {this.state.value}
                 <p></p>
-                <button onClick={this.handler}>nappi</button>
+                <button onClick={hello()}>nappi</button>
+                {/* <button onClick={() => console.log('hello world')}>nappi</button> */}
             </div>
         );
     }
