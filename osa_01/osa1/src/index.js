@@ -10,16 +10,17 @@ class App extends React.Component {
         }
     }
 
+    handler = () => {
+        console.log('nappia painettu')
+        this.setState({ value: 0 })
+    }
+
     render() {
-        const handler = () => {
-            console.log('nappia painettu')
-            this.setState({ value: 0 })
-        }
         return (
             <div>
                 value: {this.state.value}
                 <p></p>
-                <button onClick={handler}>nappi</button>
+                <button onClick={this.handler}>nappi</button>
             </div>
         );
     }
