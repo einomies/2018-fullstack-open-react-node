@@ -10,18 +10,11 @@ class App extends React.Component {
         }
     }
 
-    handler = () => {
-        console.log('nappia painettu')
-        this.setState({ value: 0 })
-    }
-
     render() {
-        const hello = (who) => {
-            const handler = () => {
-                console.log('hello ', who)
-            }
-            return handler
+        const hello = (who) => () => {
+            console.log('hello ', who)
         }
+
         return (
             <div>
                 <h1>Heipodei</h1>
