@@ -16,18 +16,20 @@ class App extends React.Component {
     }
 
     render() {
-        const hello = () => {
-            const handler = () => console.log('hello world')
+        const hello = (who) => {
+            const handler = () => {
+                console.log('hello ', who)
+            }
             return handler
         }
         return (
             <div>
+                <h1>Heipodei</h1>
                 value: {this.state.value}
                 <p></p>
-                <button onClick={hello()}>nappi</button>
-                {/* yo. rivillä tapahtumakäsittelijä (onClick) on käytännössä funktiokutsun
-                hello() paluuarvo, jolloin rivi on sama kuin alla:
-                <button onClick={() => console.log('hello world')}>nappi</button> */}
+                <button onClick={hello('world')}>nappi 1</button>
+                <button onClick={hello('react')}>nappi 2</button>
+                <button onClick={hello('evribaadi')}>nappi 3</button>
             </div>
         );
     }
