@@ -25,7 +25,9 @@ class App extends React.Component {
                 value: {this.state.value}
                 <p></p>
                 <button onClick={hello()}>nappi</button>
-                {/* <button onClick={() => console.log('hello world')}>nappi</button> */}
+                {/* yo. rivillä tapahtumakäsittelijä (onClick) on käytännössä funktiokutsun
+                hello() paluuarvo, jolloin rivi on sama kuin alla:
+                <button onClick={() => console.log('hello world')}>nappi</button> */}
             </div>
         );
     }
