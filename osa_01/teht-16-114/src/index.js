@@ -36,11 +36,27 @@ class App extends React.Component {
     });
   };
 
+  klikNollaus = () => {
+    this.setState({
+      hyva: 0,
+      neutraali: 0,
+      huono: 0,
+      yhteensaLkm: 0,
+      summa: 0
+    });
+  };
+
+  // keskiarvo = () => {
+  //   return this.state.summa / this.state.yhteensaLkm;
+  // };
+
   render() {
-    const Statistiikka = () => {
+    const keskiarvo = () => {
+      return this.state.summa / this.state.yhteensaLkm;
+    };
+    const Statistics = () => {
       return (
         <div>
-          asd
           <h1>Statistiikka</h1>
           hyvä: {this.state.hyva}
           <p />
@@ -51,6 +67,8 @@ class App extends React.Component {
           yhteensä lkm: {this.state.yhteensaLkm}
           <p />
           summa: {this.state.summa}
+          <p />
+          keskiarvo: {keskiarvo}
         </div>
       );
     };
@@ -62,7 +80,9 @@ class App extends React.Component {
         <button onClick={this.klikNeutraali}>neutraali</button>
         <button onClick={this.klikHuono}>huono</button>
         <p />
-        <Statistiikka />
+        <Statistics />
+        <p />
+        <button onClick={this.klikNollaus}>nollaus</button>
       </div>
     );
   }
