@@ -8,27 +8,31 @@ class App extends React.Component {
       hyva: 0,
       neutraali: 0,
       huono: 0,
-      yhteensa: 0,
-      kaikki: []
+      yhteensaLkm: 0,
+      summa: 0
     };
   }
 
   klikHyva = () => {
     this.setState({
       hyva: this.state.hyva + 1,
-      yhteensa: this.state.yhteensa + 1
+      yhteensaLkm: this.state.yhteensaLkm + 1,
+      summa: this.state.summa + 1
     });
   };
+
   klikNeutraali = () => {
     this.setState({
       neutraali: this.state.neutraali + 1,
-      yhteensa: this.state.yhteensa + 1
+      yhteensaLkm: this.state.yhteensaLkm + 1
     });
   };
+
   klikHuono = () => {
     this.setState({
       huono: this.state.huono + 1,
-      yhteensa: this.state.yhteensa + 1
+      yhteensaLkm: this.state.yhteensaLkm + 1,
+      summa: this.state.summa - 1
     });
   };
 
@@ -36,6 +40,7 @@ class App extends React.Component {
     const Statistiikka = () => {
       return (
         <div>
+          asd
           <h1>Statistiikka</h1>
           hyvä: {this.state.hyva}
           <p />
@@ -43,11 +48,9 @@ class App extends React.Component {
           <p />
           huono: {this.state.huono}
           <p />
-          yhteensä: {this.state.yhteensa}
+          yhteensä lkm: {this.state.yhteensaLkm}
           <p />
-          keskiarvo: {this.state.keskiarvo}
-          <p />
-          positiivisia: {this.state.positiivisia}
+          summa: {this.state.summa}
         </div>
       );
     };
