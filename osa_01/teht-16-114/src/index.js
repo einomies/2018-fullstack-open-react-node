@@ -51,31 +51,40 @@ class App extends React.Component {
   // };
 
   render() {
-    const keskiarvo = () => {
-      return this.state.summa / this.state.yhteensaLkm;
-    };
     const Statistics = () => {
       return (
         <div>
-          <h1>Statistiikka</h1>
-          hyvä: {this.state.hyva}
+          <h2>Statistiikka</h2>
+          <Statistic otsikko="hyvä" sisalto={this.state.hyva} />
+          <Statistic otsikko="neutraali" sisalto={this.state.neutraali} />
+          <Statistic otsikko="huono" sisalto={this.state.huono} />
           <p />
-          neutraali: {this.state.neutraali}
-          <p />
-          huono: {this.state.huono}
-          <p />
-          yhteensä lkm: {this.state.yhteensaLkm}
-          <p />
-          summa: {this.state.summa}
-          <p />
-          keskiarvo: {keskiarvo}
+          <Statistic otsikko="yhteensä lkm" sisalto={this.state.yhteensaLkm} />
+          <Statistic otsikko="summa" sisalto={this.state.summa} />
+          <Statistic
+            otsikko="keskiarvo"
+            sisalto={this.state.summa / this.state.yhteensaLkm}
+          />
+          <Statistic
+            otsikko="positiivisia"
+            sisalto={(this.state.hyva / this.state.yhteensaLkm) * 100}
+            merkki="%"
+          />
+        </div>
+      );
+    };
+
+    const Statistic = ({ otsikko, sisalto, merkki }) => {
+      return (
+        <div>
+          {otsikko}: {sisalto} {merkki}
         </div>
       );
     };
 
     return (
       <div>
-        <h1>Anna palautetta</h1>
+        <h2>Anna palautetta</h2>
         <button onClick={this.klikHyva}>hyvä</button>
         <button onClick={this.klikNeutraali}>neutraali</button>
         <button onClick={this.klikHuono}>huono</button>
