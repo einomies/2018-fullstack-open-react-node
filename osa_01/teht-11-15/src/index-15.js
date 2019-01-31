@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+// tehtävä(t):
+// 1.5
+
 const App = () => {
   const kurssi = {
     nimi: 'Half Stack -sovelluskehitys',
